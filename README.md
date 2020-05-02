@@ -1,4 +1,5 @@
-# github-actions-runner-ansible-role
+# ansible-role-github-actions-runner
+
 Very tiny and easy ansible role for fast ADD and REMOVE github actions runner
 
 Example use:
@@ -15,7 +16,8 @@ Example use:
     github_repo_name: "user-repo"
     github_token: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   roles:
-    - github-actions-runner-ansible-role
+    - ansible-role-github-actions-runner
+
 ```
 
 Please note: *github_token* valid only for one install and uninstall, after that you need to change it.
