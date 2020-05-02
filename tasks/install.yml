@@ -38,7 +38,7 @@
     - name: Install as service 
       command:
         chdir: "{{ runner_dir }}"
-        cmd: ./svc.sh install docsbinom
+        cmd: ./svc.sh install {{ runner_user }}
     - name: Run service
       service:
         name: "actions.{{ runner_name }}.{{ github_repo_name }}.{{ runner_user }}"
