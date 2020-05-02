@@ -1,0 +1,46 @@
+---
+- name: Make dir
+  file:
+    path: "{{ runner_dir }}"
+    state: directory
+    owner: "{{ runner_user }}"
+    group: "{{ runner_user }}"
+    mode: '0755'
+
+- name: Check old files
+  find:
+    paths: "{{ runner_dir }}"
+    file_type: any
+  register: runnerFilesFound
+
+- name: Download and unarchive GitHub runner installer
+  unarchive:
+    src: "https://github.com/actions/runner/releases/download/v{{ runner_version }}/actions-runner-linux-x64-{{ runner_version }}.tar.gz"
+    dest: "{{ runner_dir }}"
+    remote_src: yes
+    mode: 0755
+    owner: "{{ runner_user }}"
+  when: runnerFilesFound.matched < 1
+
+- name: Check if runner exists 
+  stat:
+    path: "{{ runner_dir }}/.env"
+  register: runner
+
+- name: Setup GitHub runner
+  block:
+    - name: Register GitHub runner
+      become: yes
+      become_user: "{{ runner_user }}"
+      command:
+        chdir: "{{ runner_dir }}"
+        cmd: "./config.sh --url {{ github_repo }} --token {{ github_token }} --name {{ runner_name }} --unattended"
+    - name: Install as service 
+      command:
+        chdir: "{{ runner_dir }}"
+        cmd: ./svc.sh install docsbinom
+    - name: Run service
+      service:
+        name: "actions.runner.{{ github_repo_name }}.{{ runner_user }}"
+        state: started
+  when: not runner.stat.exists

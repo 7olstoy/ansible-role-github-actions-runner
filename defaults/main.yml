@@ -1,0 +1,14 @@
+---
+mode: install
+#mode: uninstall
+
+# Runner credentials
+runner_version: 2.169.1
+runner_user: user
+runner_name: runner
+runner_dir: /home/runner/actions-runner
+
+# GitHub credentials
+github_repo: "https://github.com/user/repo"
+github_repo_name: user-repo # All / conver to -
+github_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

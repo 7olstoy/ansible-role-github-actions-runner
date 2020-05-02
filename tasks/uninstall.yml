@@ -1,0 +1,19 @@
+---
+- name: Stop service
+  service:
+    name: "actions.runner.{{ github_repo_name }}.{{ runner_user }}"
+    state: stopped
+- name: Uninstalling the service
+  command:
+    chdir: "{{ runner_dir }}"
+    cmd: ./svc.sh uninstall
+- name: Unregister runner
+  become: yes
+  become_user: "{{ runner_user }}"
+  command:
+    chdir: "{{ runner_dir }}"
+    cmd: ./config.sh remove --token {{ github_token }}
+- name: Remove folder
+  file:
+    path: "{{ runner_dir }}"
+    state: absent

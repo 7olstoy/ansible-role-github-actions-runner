@@ -1,0 +1,8 @@
+---
+- name: Install GitHub runner
+  include_tasks: install.yml
+  when: runner_mode == "install"
+
+- name: Uninstall GitHub runner
+  include_tasks: uninstall.yml
+  when: runner_mode == "uninstall"
