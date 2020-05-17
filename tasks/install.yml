@@ -24,7 +24,7 @@
 
 - name: Check if runner exists 
   stat:
-    path: "{{ runner_dir }}/.env"
+    path: "{{ runner_dir }}/svc.sh"
   register: runner
 
 - name: Setup GitHub runner
