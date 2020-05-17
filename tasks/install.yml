@@ -41,6 +41,6 @@
         cmd: ./svc.sh install {{ runner_user }}
     - name: Run service
       service:
-        name: "actions.runner.{{ github_repo_name }}.{{ runner_user }}"
+        name: "actions.runner.{{ github_repo_name }}.{{ runner_name }}"
         state: started
   when: not runner.stat.exists
