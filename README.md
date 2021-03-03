@@ -8,12 +8,12 @@ Example use:
   hosts: server
   vars:
     runner_mode: "install" # or uninstall
-    runner_version: "2.169.1"
+    runner_version: "2.277.1"
     runner_user: "user"
     runner_name: "user"
     runner_dir: "/home/user/actions-runner"
     github_repo: "https://github.com/user/repo"
-    github_repo_name: "user-repo"
+    github_repo_name: "user-repo" # All / convert to -
     github_token: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   roles:
     - ansible-role-github-actions-runner
