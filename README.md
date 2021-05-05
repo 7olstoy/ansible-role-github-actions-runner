@@ -1,3 +1,6 @@
+# Status: Deprecated
+Please use https://github.com/MonolithProjects/ansible-github_actions_runner
+
 # ansible-role-github-actions-runner
 
 Very tiny and easy ansible role for fast ADD and REMOVE github actions runner
