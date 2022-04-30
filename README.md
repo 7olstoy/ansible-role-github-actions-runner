@@ -11,7 +11,7 @@ Example use:
   hosts: server
   vars:
     runner_mode: "install" # or uninstall
-    runner_version: "2.277.1"
+    runner_version: "2.290.1"
     runner_user: "user"
     runner_name: "user"
     runner_dir: "/home/user/actions-runner"

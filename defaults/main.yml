@@ -3,7 +3,7 @@ mode: install
 #mode: uninstall
 
 # Runner credentials
-runner_version: 2.169.1
+runner_version: 2.290.1
 runner_user: user
 runner_name: runner
 runner_dir: /home/runner/actions-runner
